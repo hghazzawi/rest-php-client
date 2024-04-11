@@ -286,6 +286,7 @@ class AbstractSugarBeanEndpointTest extends \PHPUnit\Framework\TestCase
         self::$client->mockResponses->append(new Response(200, [], json_encode($auditResponse)));
 
         $Bean->setClient(self::$client);
+        $originalVersion = self::$client->getVersion();
         self::$client->setVersion("10");
         $Bean->setUrlArgs(['Foo', 'bar']);
         $Audit = $Bean->auditLog(100);
@@ -295,6 +296,7 @@ class AbstractSugarBeanEndpointTest extends \PHPUnit\Framework\TestCase
         parse_str(self::$client->mockResponses->getLastRequest()->getUri()->getQuery(), $query);
         $this->assertEquals(100, $query['max_num']);
         $this->assertEquals('GET', self::$client->mockResponses->getLastRequest()->getMethod());
+        self::$client->setVersion($originalVersion);
     }
 
     /**
@@ -488,8 +490,8 @@ class AbstractSugarBeanEndpointTest extends \PHPUnit\Framework\TestCase
      */
     public function testBeanSave()
     {
-        self::$client->mockResponses->append(new Response(200, [], json_encode(array('id'=> '12345','foo' => 'bar','baz' => 'foz'))));
-        self::$client->mockResponses->append(new Response(200, [], json_encode(array('id'=> '12345','foo' => 'bar','baz' => 'foz'))));
+        self::$client->mockResponses->append(new Response(200, [], json_encode(array('id' => '12345','foo' => 'bar','baz' => 'foz'))));
+        self::$client->mockResponses->append(new Response(200, [], json_encode(array('id' => '12345','foo' => 'bar','baz' => 'foz'))));
         $Bean = new Module();
         $Bean->setClient(self::$client);
         $Bean->setModule('Accounts');
