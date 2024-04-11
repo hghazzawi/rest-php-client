@@ -7,7 +7,7 @@
 namespace Sugarcrm\REST\Tests\Client;
 
 use GuzzleHttp\Psr7\Response;
-use Psr\Log\Test\TestLogger;
+use ColinODell\PsrTestLogger\TestLogger;
 use Sugarcrm\REST\Client\SugarApi;
 use Sugarcrm\REST\Endpoint\Metadata;
 use Sugarcrm\REST\Tests\Stubs\Auth\SugarOAuthStub;
@@ -197,7 +197,7 @@ class SugarApiTest extends \PHPUnit\Framework\TestCase
         $Client->getAuth()->setToken([
             'access_token' => '12345',
             'refresh_token' => '67890',
-            'expiration' => time()-10,
+            'expiration' => time() - 10,
         ]);
 
         //Text expired token, and automatic refresh
@@ -214,7 +214,7 @@ class SugarApiTest extends \PHPUnit\Framework\TestCase
             'access_token' => '123456',
             'refresh_token' => '678901',
             'expires_in' => 3600,
-            'expiration' => time()+3600-30
+            'expiration' => time() + 3600 - 30
         ])), $Client->getAuth()->getToken());
         $Client->container = [];
         $Client->mockResponses->reset();
@@ -235,7 +235,7 @@ class SugarApiTest extends \PHPUnit\Framework\TestCase
         $Client->getAuth()->setToken([
             'access_token' => '12345',
             'refresh_token' => '67890',
-            'expiration' => time()-10,
+            'expiration' => time() - 10,
         ]);
         $this->assertEquals(true, $Client->isAuthenticated());
         $this->assertEquals("/rest/v11/oauth2/token", $Client->mockResponses->getLastRequest()->getUri()->getPath());
@@ -254,7 +254,7 @@ class SugarApiTest extends \PHPUnit\Framework\TestCase
             'access_token' => '123456',
             'refresh_token' => '678901',
             'expires_in' => 3600,
-            'expiration' => time()+3600-30
+            'expiration' => time() + 3600 - 30
         ])), $Client->getAuth()->getToken());
     }
 

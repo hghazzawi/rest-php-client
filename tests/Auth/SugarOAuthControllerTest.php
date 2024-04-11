@@ -8,7 +8,7 @@ namespace Sugarcrm\REST\Tests\Auth;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\Psr7\Response;
 use MRussell\REST\Tests\Stubs\Endpoint\AuthEndpoint;
-use Psr\Log\Test\TestLogger;
+use ColinODell\PsrTestLogger\TestLogger;
 use Sugarcrm\REST\Endpoint\OAuth2Sudo;
 use Sugarcrm\REST\Endpoint\OAuth2Token;
 use Sugarcrm\REST\Tests\Stubs\Auth\SugarOAuthStub;
