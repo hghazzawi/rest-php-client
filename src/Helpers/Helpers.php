@@ -7,7 +7,7 @@ namespace SugarAPI\SDK\Helpers;
 
 class Helpers
 {
-    const API_VERSION = 10;
+    const API_VERSION = 11;
     const API_URL = '/rest/v%s/';
 
     /**

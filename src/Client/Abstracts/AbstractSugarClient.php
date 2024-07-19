@@ -62,7 +62,7 @@ abstract class AbstractSugarClient extends AbstractClient
      * since customizing API allows for additional versioning to allow for duplicate entrypoints
      * @var
      */
-    protected $apiVersion = 10;
+    protected $apiVersion = 11;
 
     public function __construct($server = '', array $credentials = array())
     {

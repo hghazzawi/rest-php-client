@@ -24,7 +24,7 @@ abstract class AbstractRequest implements RequestInterface
      * @var array
      */
     protected static $_DEFAULT_OPTIONS = array(
-        CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_0,
+        CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_2_0,
         CURLOPT_HEADER => true,
         CURLOPT_SSL_VERIFYPEER => false,
         CURLOPT_RETURNTRANSFER => true,
