@@ -24,11 +24,10 @@ abstract class AbstractRequest implements RequestInterface
      * @var array
      */
     protected static $_DEFAULT_OPTIONS = array(
-        CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_2_0,
+        CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_2TLS,
         CURLOPT_HEADER => true,
         CURLOPT_SSL_VERIFYPEER => false,
         CURLOPT_RETURNTRANSFER => true,
-        CURLOPT_USERAGENT => 'Sugar-REST-PHP-Client'
     );
 
     /**
@@ -95,6 +94,10 @@ abstract class AbstractRequest implements RequestInterface
         foreach (static::$_DEFAULT_OPTIONS as $option => $value) {
             $this->setOption($option, $value);
         }
+
+        if(!empty(config('sugar.api_user_agent'))){
+            $this->setOption(CURLOPT_USERAGENT,config('sugar.api_user_agent'));
+         } 
     }
 
     /**
